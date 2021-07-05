@@ -18,7 +18,7 @@
 					<RowDefinition Height="*"/>
 				</Grid.RowDefinitions>
 			</Grid>
-			<Grid Grid.Column="1">
+			<Grid Grid.Column="1" x:Name="gemGrid">
 				<Grid.ColumnDefinitions>
 					<ColumnDefinition Width="*"/>
 					<ColumnDefinition Width="*"/>
@@ -33,35 +33,25 @@
 				<Grid.RowDefinitions>
 					<RowDefinition Height="2*"/>
 					<RowDefinition Height="*"/>
-					<RowDefinition Height="2*"/>
+					<!--<RowDefinition Height="2*"/>
 					<RowDefinition Height="*"/>
 					<RowDefinition Height="2*"/>
 					<RowDefinition Height="*"/>
 					<RowDefinition Height="2*"/>
 					<RowDefinition Height="*"/>
 					<RowDefinition Height="2*"/>
-					<RowDefinition Height="*"/>
+					<RowDefinition Height="*"/>-->
 				</Grid.RowDefinitions>
-				<TextBox x:Name="a" Grid.Column="0" Grid.Row="1"/>
-				<TextBox x:Name="b" Grid.Column="1" Grid.Row="1"/>
-				<TextBox x:Name="c" Grid.Column="2" Grid.Row="1"/>
-				<TextBox x:Name="d" Grid.Column="3" Grid.Row="1"/>
-				<TextBox x:Name="e" Grid.Column="4" Grid.Row="1"/>
-				<TextBox x:Name="f" Grid.Column="5" Grid.Row="1"/>
-				<TextBox x:Name="g" Grid.Column="6" Grid.Row="1"/>
-				<TextBox x:Name="h" Grid.Column="7" Grid.Row="1"/>
-				<TextBox x:Name="i" Grid.Column="8" Grid.Row="1"/>
-				<TextBox x:Name="a2" Grid.Column="0" Grid.Row="3"/>
-				<TextBox x:Name="b2" Grid.Column="1" Grid.Row="3"/>
-				<TextBox x:Name="c2" Grid.Column="2" Grid.Row="3"/>
-				<TextBox x:Name="d2" Grid.Column="3" Grid.Row="3"/>
-				<TextBox x:Name="e2" Grid.Column="4" Grid.Row="3"/>
-				<TextBox x:Name="f2" Grid.Column="5" Grid.Row="3"/>
-				<TextBox x:Name="g2" Grid.Column="6" Grid.Row="3"/>
-				<TextBox x:Name="h2" Grid.Column="7" Grid.Row="3"/>
-				<TextBox x:Name="i2" Grid.Column="8" Grid.Row="3"/>
+				<TextBox x:Name="b1" Grid.Column="0" Grid.Row="1"/>
+				<TextBox x:Name="b2" Grid.Column="1" Grid.Row="1"/>
+				<TextBox x:Name="b3" Grid.Column="2" Grid.Row="1"/>
+				<TextBox x:Name="b4" Grid.Column="3" Grid.Row="1"/>
+				<TextBox x:Name="b5" Grid.Column="4" Grid.Row="1"/>
+				<TextBox x:Name="b6" Grid.Column="5" Grid.Row="1"/>
+				<TextBox x:Name="b7" Grid.Column="6" Grid.Row="1"/>
+				<TextBox x:Name="b8" Grid.Column="7" Grid.Row="1"/>
+				<TextBox x:Name="b9" Grid.Column="8" Grid.Row="1"/>
 			</Grid>
-		</Grid>
-		
+		</Grid>		
     </Grid>
 </Window>

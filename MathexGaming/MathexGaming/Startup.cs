@@ -1,6 +1,8 @@
+using MathexGaming.Data;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -13,9 +15,11 @@ namespace MathexGaming
 {
 	public class Startup
 	{
+		public string Connection { get; set; }
 		public Startup(IConfiguration configuration)
 		{
 			Configuration = configuration;
+			Connection = Configuration.GetConnectionString("DevConnection");
 		}
 
 		public IConfiguration Configuration { get; }
@@ -24,6 +28,7 @@ namespace MathexGaming
 		public void ConfigureServices(IServiceCollection services)
 		{
 			services.AddControllersWithViews();
+			services.AddDbContext<MathexGamingDbContext>(options => options.UseSqlServer(Connection));
 		}
 
 		// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

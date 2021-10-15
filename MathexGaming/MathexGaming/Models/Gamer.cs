@@ -6,9 +6,13 @@ namespace MathexGaming.Models
 	{
 		[Key]
 		public int Id { get; set; }
+		
 		[Required]
+		[StringLength(20)]
 		public string PSUser { get; set; }
+		
 		[Required]
+		[StringLength(50)]
 		public string PSEmail { get; set; }
 	}
 }

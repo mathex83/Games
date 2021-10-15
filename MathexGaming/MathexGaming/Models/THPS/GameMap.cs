@@ -9,10 +9,14 @@ namespace MathexGaming.Models.THPS
 		[Key]
 		[DatabaseGenerated(DatabaseGeneratedOption.None)]
 		public int Id { get; set; }
+		
 		[Required]
+		[StringLength(20)]
 		public string Name { get; set; }
-
+		
+		[StringLength(50)]
 		public string RWLocation { get; set; }
+		
 		[Required]
 		public List<Challenge> GameMapChallenges { get; set; }
 	}

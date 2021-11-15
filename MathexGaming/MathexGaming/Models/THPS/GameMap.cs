@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace MathexGaming.Models.THPS
@@ -16,8 +15,5 @@ namespace MathexGaming.Models.THPS
 		
 		[StringLength(50)]
 		public string RWLocation { get; set; }
-		
-		[Required]
-		public List<Challenge> GameMapChallenges { get; set; }
 	}
 }

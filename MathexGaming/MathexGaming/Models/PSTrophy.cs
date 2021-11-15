@@ -20,8 +20,10 @@ namespace MathexGaming.Models
 
 		[StringLength(50)]
 		public string DenName { get; set; }
+
 		[StringLength(200)]
 		public string DenDescription { get; set; }
+
 		[StringLength(200)]
 		public string PSTrophiesUri { get; set; }
 

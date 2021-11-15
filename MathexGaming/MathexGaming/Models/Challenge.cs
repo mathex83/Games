@@ -17,10 +17,5 @@ namespace MathexGaming.Models
 		
 		[ForeignKey("GameMap")]
 		public int GameMapId { get; set; }
-		//public Challenge(int id, string name)
-		//{
-		//	Id = id;
-		//	Name = name;
-		//}
 	}
 }

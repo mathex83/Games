@@ -8,7 +8,7 @@ namespace MathexGaming.Models
 		public int Id { get; set; }
 		
 		[Required]
-		[StringLength(50)]
+		[StringLength(100)]
 		public string Name { get; set; }
 	}
 }

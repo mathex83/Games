@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using MathexGaming.Models;
+using MathexGaming.Models.THPS;
 
 namespace MathexGaming.Data
 {
@@ -11,5 +12,7 @@ namespace MathexGaming.Data
 		{
 		}
 		public DbSet<Game> Game { get; set; }
+		public DbSet<MathexGaming.Models.Challenge> Challenge { get; set; }
+		public DbSet<MathexGaming.Models.THPS.GameMap> GameMap { get; set; }
 	}
 }

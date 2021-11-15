@@ -1,10 +1,10 @@
-﻿@model IEnumerable<MathexGaming.Models.Game>
+﻿@model IEnumerable<MathexGaming.Models.THPS.GameMap>
 
 @{
-    ViewData["Title"] = "GameHome";
+    ViewData["Title"] = "Index";
 }
 
-<h1>GameHome</h1>
+<h1>Index</h1>
 
 <p>
     <a asp-action="Create">Create New</a>
@@ -15,6 +15,9 @@
             <th>
                 @Html.DisplayNameFor(model => model.Name)
             </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RWLocation)
+            </th>
             <th></th>
         </tr>
     </thead>
@@ -24,9 +27,15 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Name)
             </td>
-            <td><a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+            <td>
+                @Html.DisplayFor(modelItem => item.RWLocation)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
                 <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
             </td>
-        </tr>}
+        </tr>
+}
     </tbody>
 </table>

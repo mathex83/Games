@@ -369,4 +369,4 @@ FodyWeavers.xsd
 *.svg
 
 # DB-connection file
-Appsettings.json
+appsettings.json

@@ -1,28 +1,31 @@
-﻿using MathexGaming.Data;
-using MathexGaming.Models;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
+using MathexGaming.Data;
+using MathexGaming.Models.Diablo3;
 
 namespace MathexGaming.Controllers
 {
-	public class ChallengeController : Controller
+    public class JourneyObjectivesController : Controller
     {
         private readonly MathexGamingContext _context;
 
-        public ChallengeController(MathexGamingContext context)
+        public JourneyObjectivesController(MathexGamingContext context)
         {
             _context = context;
         }
 
-        // GET: Challenge
-        public async Task<IActionResult> Index()
+        // GET: JourneyObjectives
+        public async Task<IActionResult> JourneyHome()
         {
-            return View(await _context.Challenge.ToListAsync());
+            return View(await _context.JourneyObjectives.ToListAsync());
         }
 
-        // GET: Challenge/Details/5
+        // GET: JourneyObjectives/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -30,39 +33,39 @@ namespace MathexGaming.Controllers
                 return NotFound();
             }
 
-            var challenge = await _context.Challenge
+            var journeyObjective = await _context.JourneyObjectives
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (challenge == null)
+            if (journeyObjective == null)
             {
                 return NotFound();
             }
 
-            return View(challenge);
+            return View(journeyObjective);
         }
 
-        // GET: Challenge/Create
+        // GET: JourneyObjectives/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: Challenge/Create
+        // POST: JourneyObjectives/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Name,Completed,GameMapId")] Challenge challenge)
+        public async Task<IActionResult> Create([Bind("Id,ObjectiveName,Description,Chapter,Season,Group,CompletedColor")] JourneyObjective journeyObjective)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(challenge);
+                _context.Add(journeyObjective);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(JourneyHome));
             }
-            return View(challenge);
+            return View(journeyObjective);
         }
 
-        // GET: Challenge/Edit/5
+        // GET: JourneyObjectives/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -70,22 +73,22 @@ namespace MathexGaming.Controllers
                 return NotFound();
             }
 
-            var challenge = await _context.Challenge.FindAsync(id);
-            if (challenge == null)
+            var journeyObjective = await _context.JourneyObjectives.FindAsync(id);
+            if (journeyObjective == null)
             {
                 return NotFound();
             }
-            return View(challenge);
+            return View(journeyObjective);
         }
 
-        // POST: Challenge/Edit/5
+        // POST: JourneyObjectives/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Completed,GameMapId")] Challenge challenge)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,ObjectiveName,Description,Chapter,Season,Group,CompletedColor")] JourneyObjective journeyObjective)
         {
-            if (id != challenge.Id)
+            if (id != journeyObjective.Id)
             {
                 return NotFound();
             }
@@ -94,12 +97,12 @@ namespace MathexGaming.Controllers
             {
                 try
                 {
-                    _context.Update(challenge);
+                    _context.Update(journeyObjective);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!ChallengeExists(challenge.Id))
+                    if (!JourneyObjectiveExists(journeyObjective.Id))
                     {
                         return NotFound();
                     }
@@ -108,12 +111,12 @@ namespace MathexGaming.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(JourneyHome));
             }
-            return View(challenge);
+            return View(journeyObjective);
         }
 
-        // GET: Challenge/Delete/5
+        // GET: JourneyObjectives/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -121,30 +124,30 @@ namespace MathexGaming.Controllers
                 return NotFound();
             }
 
-            var challenge = await _context.Challenge
+            var journeyObjective = await _context.JourneyObjectives
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (challenge == null)
+            if (journeyObjective == null)
             {
                 return NotFound();
             }
 
-            return View(challenge);
+            return View(journeyObjective);
         }
 
-        // POST: Challenge/Delete/5
+        // POST: JourneyObjectives/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var challenge = await _context.Challenge.FindAsync(id);
-            _context.Challenge.Remove(challenge);
+            var journeyObjective = await _context.JourneyObjectives.FindAsync(id);
+            _context.JourneyObjectives.Remove(journeyObjective);
             await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+            return RedirectToAction(nameof(JourneyHome));
         }
 
-        private bool ChallengeExists(int id)
+        private bool JourneyObjectiveExists(int id)
         {
-            return _context.Challenge.Any(e => e.Id == id);
+            return _context.JourneyObjectives.Any(e => e.Id == id);
         }
     }
 }

@@ -1,28 +1,31 @@
-﻿using MathexGaming.Data;
-using MathexGaming.Models.THPS;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
+using MathexGaming.Data;
+using MathexGaming.Models.Diablo3;
 
 namespace MathexGaming.Controllers
 {
-	public class GameMapsController : Controller
+    public class DiabloAchievementsController : Controller
     {
         private readonly MathexGamingContext _context;
 
-        public GameMapsController(MathexGamingContext context)
+        public DiabloAchievementsController(MathexGamingContext context)
         {
             _context = context;
         }
 
-        // GET: GameMaps
-        public async Task<IActionResult> Index()
+        // GET: DiabloAchievements
+        public async Task<IActionResult> D3AchievementHome()
         {
-            return View(await _context.GameMap.ToListAsync());
+            return View(await _context.DiabloAchievements.ToListAsync());
         }
 
-        // GET: GameMaps/Details/5
+        // GET: DiabloAchievements/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -30,39 +33,39 @@ namespace MathexGaming.Controllers
                 return NotFound();
             }
 
-            var gameMap = await _context.GameMap
+            var diabloAchievement = await _context.DiabloAchievements
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (gameMap == null)
+            if (diabloAchievement == null)
             {
                 return NotFound();
             }
 
-            return View(gameMap);
+            return View(diabloAchievement);
         }
 
-        // GET: GameMaps/Create
+        // GET: DiabloAchievements/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: GameMaps/Create
+        // POST: DiabloAchievements/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Name,RWLocation")] GameMap gameMap)
+        public async Task<IActionResult> Create([Bind("Id,CompletedColor,AchievementName,AchievementText,Group,SubGroup,SeasonRoll")] DiabloAchievement diabloAchievement)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(gameMap);
+                _context.Add(diabloAchievement);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(D3AchievementHome));
             }
-            return View(gameMap);
+            return View(diabloAchievement);
         }
 
-        // GET: GameMaps/Edit/5
+        // GET: DiabloAchievements/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -70,22 +73,22 @@ namespace MathexGaming.Controllers
                 return NotFound();
             }
 
-            var gameMap = await _context.GameMap.FindAsync(id);
-            if (gameMap == null)
+            var diabloAchievement = await _context.DiabloAchievements.FindAsync(id);
+            if (diabloAchievement == null)
             {
                 return NotFound();
             }
-            return View(gameMap);
+            return View(diabloAchievement);
         }
 
-        // POST: GameMaps/Edit/5
+        // POST: DiabloAchievements/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,RWLocation")] GameMap gameMap)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,CompletedColor,AchievementName,AchievementText,Group,SubGroup,SeasonRoll")] DiabloAchievement diabloAchievement)
         {
-            if (id != gameMap.Id)
+            if (id != diabloAchievement.Id)
             {
                 return NotFound();
             }
@@ -94,12 +97,12 @@ namespace MathexGaming.Controllers
             {
                 try
                 {
-                    _context.Update(gameMap);
+                    _context.Update(diabloAchievement);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!GameMapExists(gameMap.Id))
+                    if (!DiabloAchievementExists(diabloAchievement.Id))
                     {
                         return NotFound();
                     }
@@ -108,12 +111,12 @@ namespace MathexGaming.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(D3AchievementHome));
             }
-            return View(gameMap);
+            return View(diabloAchievement);
         }
 
-        // GET: GameMaps/Delete/5
+        // GET: DiabloAchievements/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -121,30 +124,30 @@ namespace MathexGaming.Controllers
                 return NotFound();
             }
 
-            var gameMap = await _context.GameMap
+            var diabloAchievement = await _context.DiabloAchievements
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (gameMap == null)
+            if (diabloAchievement == null)
             {
                 return NotFound();
             }
 
-            return View(gameMap);
+            return View(diabloAchievement);
         }
 
-        // POST: GameMaps/Delete/5
+        // POST: DiabloAchievements/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var gameMap = await _context.GameMap.FindAsync(id);
-            _context.GameMap.Remove(gameMap);
+            var diabloAchievement = await _context.DiabloAchievements.FindAsync(id);
+            _context.DiabloAchievements.Remove(diabloAchievement);
             await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+            return RedirectToAction(nameof(D3AchievementHome));
         }
 
-        private bool GameMapExists(int id)
+        private bool DiabloAchievementExists(int id)
         {
-            return _context.GameMap.Any(e => e.Id == id);
+            return _context.DiabloAchievements.Any(e => e.Id == id);
         }
     }
 }

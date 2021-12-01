@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using MathexGaming.Models;
 using MathexGaming.Models.THPS;
+using MathexGaming.Models.Diablo3;
 
 namespace MathexGaming.Data
 {
@@ -12,7 +13,9 @@ namespace MathexGaming.Data
 		{
 		}
 		public DbSet<Game> Game { get; set; }
-		public DbSet<MathexGaming.Models.Challenge> Challenge { get; set; }
-		public DbSet<MathexGaming.Models.THPS.GameMap> GameMap { get; set; }
+		public DbSet<Challenge> Challenge { get; set; }
+		public DbSet<GameMap> GameMap { get; set; }
+		public DbSet<DiabloAchievement> DiabloAchievements { get; set; }
+		public DbSet<JourneyObjective> JourneyObjectives { get; set; }
 	}
 }

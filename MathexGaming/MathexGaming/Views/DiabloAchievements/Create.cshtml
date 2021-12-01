@@ -1,0 +1,58 @@
+﻿@model MathexGaming.Models.Diablo3.DiabloAchievement
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<h4>DiabloAchievement</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="CompletedColor" class="control-label"></label>
+                <input asp-for="CompletedColor" class="form-control" />
+                <span asp-validation-for="CompletedColor" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AchievementName" class="control-label"></label>
+                <input asp-for="AchievementName" class="form-control" />
+                <span asp-validation-for="AchievementName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AchievementText" class="control-label"></label>
+                <input asp-for="AchievementText" class="form-control" />
+                <span asp-validation-for="AchievementText" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Group" class="control-label"></label>
+                <input asp-for="Group" class="form-control" />
+                <span asp-validation-for="Group" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SubGroup" class="control-label"></label>
+                <input asp-for="SubGroup" class="form-control" />
+                <span asp-validation-for="SubGroup" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SeasonRoll" class="control-label"></label>
+                <input asp-for="SeasonRoll" class="form-control" />
+                <span asp-validation-for="SeasonRoll" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="D3AchievementHome">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

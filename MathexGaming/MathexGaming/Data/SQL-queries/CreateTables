@@ -1,0 +1,41 @@
+USE MathexGaming
+GO
+/*THPS*/
+CREATE TABLE [Challenge] (
+    [Id]        INT IDENTITY(1,1) PRIMARY KEY,
+    [Name]      NVARCHAR (50) NOT NULL,
+    [Completed] BIT           NOT NULL,
+    [GameMapId] INT           NOT NULL
+);
+
+CREATE TABLE [Game] (
+    [Id]   INT            IDENTITY (1, 1) PRIMARY KEY,
+    [Name] NVARCHAR (100) NOT NULL
+);
+
+CREATE TABLE [GameMap] (
+    [Id]         INT           IDENTITY(1,1) PRIMARY KEY,
+    [Name]       NVARCHAR (20) NOT NULL,
+    [RWLocation] NVARCHAR (50) NULL
+);
+
+/*DIABLO 3*/
+CREATE TABLE [DiabloAchievements] (
+    [Id]              INT   IDENTITY (1, 1) PRIMARY KEY,
+    [CompletedColor]  NVARCHAR (5)  DEFAULT('red')  NOT NULL,
+    [AchievementName] NVARCHAR (100) NOT NULL,
+    [AchievementText] NVARCHAR (300) NOT NULL,
+    [Group]           NVARCHAR (20)  NOT NULL,
+    [SubGroup]        NVARCHAR (20)  NULL,
+    [SeasonRoll]      INT            NOT NULL
+);
+
+CREATE TABLE [JourneyObjectives] (
+    [Id]             INT            IDENTITY (1, 1) PRIMARY KEY,
+    [ObjectiveName]  NVARCHAR (30)  NOT NULL,
+    [Description]    NVARCHAR (100) NOT NULL,
+    [Chapter]        NVARCHAR (15)  NOT NULL,
+    [Season]         INT            NOT NULL,
+    [Group]          NVARCHAR (100) NOT NULL,
+    [CompletedColor] NVARCHAR (5) DEFAULT('red')   NOT NULL
+);

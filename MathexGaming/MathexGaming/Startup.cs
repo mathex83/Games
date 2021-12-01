@@ -23,7 +23,7 @@ namespace MathexGaming
 		{
 			services.AddDbContext<MathexGamingContext>(options =>
 				options.UseSqlServer(
-					Configuration.GetConnectionString("DevConnection")));
+					Configuration.GetConnectionString("DevConnection2")));
 			services.AddDatabaseDeveloperPageExceptionFilter();
 
 			services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)

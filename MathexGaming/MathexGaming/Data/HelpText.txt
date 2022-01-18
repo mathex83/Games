@@ -1,0 +1,3 @@
+﻿Add-Migration initial -OutputDir "Data/Migrations"
+
+update-database

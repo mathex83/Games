@@ -9,13 +9,13 @@ namespace MathexGaming.Models.Diablo3
 		[Key]
 		public int Id { get; set; }
 
-		[Required]
+		[Required, StringLength(30)]
 		public string ObjectiveName { get; set; }
 
-		[Required]
+		[Required, StringLength(200)]
 		public string Description { get; set; }
 
-		[Required]
+		[Required, StringLength(10)]
 		public string Chapter { get; set; }
 
 		[Required]
@@ -23,8 +23,5 @@ namespace MathexGaming.Models.Diablo3
 
 		[Required]
 		public string Group { get; set; }
-
-		[Required]
-		public string CompletedColor { get; set; }
 	}
 }

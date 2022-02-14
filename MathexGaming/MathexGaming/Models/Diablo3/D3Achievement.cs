@@ -1,17 +1,13 @@
-﻿using System.ComponentModel;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace MathexGaming.Models.Diablo3
 {
-	public class DiabloAchievement
+	public class D3Achievement
 	{
 		[Key]
 		[DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-		public int Id { get; set; }
-
-		[Required, StringLength(5)]
-		public string CompletedColor { get; set; }
+		public int D3AchievementId { get; set; }
 
 		[Required, StringLength(100)]
 		public string AchievementName { get; set; }
@@ -25,6 +21,6 @@ namespace MathexGaming.Models.Diablo3
 		[StringLength(20)]
 		public string SubGroup { get; set; }
 
-		public int SeasonRoll { get; set; }
+		public int? SeasonRoll { get; set; }
 	}
 }

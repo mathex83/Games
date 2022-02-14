@@ -3,9 +3,7 @@ for details on configuring this project to bundle and minify static web assets. 
 .darker-bg {
     background-color: lightgray;
 }
-body {
-    font-family: Consolas;
-}
+
 img {
     max-width: 20%;
     height: auto;
@@ -69,8 +67,10 @@ html {
 }
 
 body {
-  /* Margin bottom by footer height */
-  margin-bottom: 60px;
+    /* Margin bottom by footer height */
+    margin-bottom: 60px;
+    font-family: Consolas;
+    font-size: 18px;
 }
 .footer {
   position: absolute;

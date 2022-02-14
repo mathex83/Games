@@ -1,0 +1,49 @@
+﻿@model MathexGaming.Models.FIFA.UserCoin
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>UserCoin</h4>
+<hr />
+<div class="row bg-transparent">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="CoinID" />
+            <div class="form-group">
+                <label asp-for="Coins" class="control-label"></label>
+                <input asp-for="Coins" class="form-control" />
+                <span asp-validation-for="Coins" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DraftsBought" class="control-label"></label>
+                <input asp-for="DraftsBought" class="form-control" />
+                <span asp-validation-for="DraftsBought" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="UserID" class="control-label"></label>
+                <select asp-for="UserID" class="form-control" asp-items="ViewBag.UserID"></select>
+                <span asp-validation-for="UserID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FUTgameID" class="control-label"></label>
+                <select asp-for="FUTgameID" class="form-control" asp-items="ViewBag.FUTgameID"></select>
+                <span asp-validation-for="FUTgameID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="UserCoinsList">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

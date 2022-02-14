@@ -1,0 +1,96 @@
+﻿@model IEnumerable<MathexGaming.Models.FIFA.UserCoin>
+
+@{
+	ViewData["Title"] = "UserCoinsList";
+}
+
+@{
+	ViewData["Title"] = "CoinsList";
+}
+@{
+	double needed = 16 * 15000*1.000;
+	double coins = 0.000;
+	double drafts = 0.000;
+	double matchReward = 500.000;
+	double draftPrice = 15000.000;
+	string a = "";
+}
+
+<div>
+	17:
+	@if (ViewData["sum17"] != null)
+	{
+		coins = Convert.ToInt32(@ViewData["sum17"]);
+		drafts = Convert.ToInt32(ViewData["d17"]);
+
+		a = $"{coins + (drafts * draftPrice)}/{needed}={needed - coins - (drafts * draftPrice)} (Matches left: {Math.Ceiling((needed - coins - (drafts * draftPrice)) / matchReward)})";
+	}
+	@a
+</div>
+
+<div>
+	18:
+	@if (ViewData["sum18"] != null)
+	{
+		coins = Convert.ToInt32(@ViewData["sum18"]);
+		drafts = Convert.ToInt32(ViewData["d18"]);
+		a = $"{coins + (drafts * draftPrice)}/{needed}={needed - coins - (drafts * draftPrice)} (Matches left: {Math.Ceiling((needed - coins - (drafts * draftPrice)) / matchReward)})";
+	}
+	@a
+</div>
+
+<div>
+	19:
+	@if (ViewData["sum19"] != null)
+	{
+		coins = Convert.ToInt32(@ViewData["sum19"]);
+		drafts = Convert.ToInt32(ViewData["d19"]);
+		a = $"{coins + (drafts * draftPrice)}/{needed}={needed - coins - (drafts * draftPrice)} (Matches left: {Math.Ceiling((needed - coins - (drafts * draftPrice)) / matchReward)})";
+	}
+	@a
+</div>
+
+<br/>
+
+<table class="table-sm">
+	@*<thead>
+		<tr>
+			<th>
+				@Html.DisplayNameFor(model => model.Coins)
+			</th>
+			<th>
+				@Html.DisplayNameFor(model => model.DraftsBought)
+			</th>
+			<th>
+				@Html.DisplayNameFor(model => model.User)
+			</th>
+			<th>
+				@Html.DisplayNameFor(model => model.FUTgame)
+			</th>
+			<th></th>
+		</tr>
+	</thead>*@
+	<tbody>
+		@foreach (var item in Model)
+		{
+			<tr>
+				<td>
+					@Html.DisplayFor(modelItem => item.Coins)
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.DraftsBought)
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.User.UserName)
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.FUTgame.FUTgameID)
+				</td>
+				<td>
+					<a asp-action="Edit" asp-route-id="@item.CoinID">Edit</a>
+					@* | <a asp-action="Delete" asp-route-id="@item.CoinID">Delete</a>*@
+				</td>
+			</tr>
+		}
+	</tbody>
+</table>
